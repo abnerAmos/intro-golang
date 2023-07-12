@@ -1,0 +1,4 @@
+https://httpstat.us/Random/200
+https://httpstat.us/Random/200,404
+https://httpstat.us/Random/200,400
+https://httpstat.us/Random/500
