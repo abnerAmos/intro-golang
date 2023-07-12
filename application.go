@@ -4,7 +4,11 @@ import (
 	"fmt"
 	"net/http"
 	"os"
+	"time"
 )
+
+const quantityMonitoring = 3
+const delay = 5
 
 func main() {
 
@@ -20,7 +24,7 @@ func main() {
 
 		switch selectOption() {
 		case 1:
-			verifySite()
+			monitoring()
 		case 2:
 			fmt.Println("Exibindo Logs...")
 		case 0:
@@ -55,9 +59,26 @@ func nomeIdade() (string, int) {
 	return nome, idade
 }
 
-func verifySite() {
+func monitoring() {
 	fmt.Println("Monitorando...")
-	site := "https://httpstat.us/Random/200,404"
+
+	sites := []string{
+		"https://httpstat.us/Random/200,404",
+		"https://httpstat.us/Random/200",
+		"https://httpstat.us/Random/200,400"}
+
+	for i := 0; i < quantityMonitoring; i++ {
+		for i, site := range sites {
+			fmt.Println("Verificando site", i, ":", site)
+			verifySite(site)
+		}
+		fmt.Println()
+		time.Sleep(delay * time.Second)
+	}
+}
+
+func verifySite(site string) {
+
 	resp, _ := http.Get(site)
 
 	if resp.StatusCode == 200 {
