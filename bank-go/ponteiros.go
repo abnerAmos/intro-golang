@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"intro-golang/bank-go/accounts"
 )
 
 type Ponteiro struct {
@@ -15,11 +14,11 @@ type Ponteiro struct {
 func mainPonteiro() {
 
 	// Primeira forma de atribuir valores a uma struct
-	account1 := accounts.CurrentAccount{
-		HolderName: "Abner Amos",
-		Agency:     1,
-		Account:    123,
-		Amount:     100.00}
+	account1 := Ponteiro{
+		holderName: "Abner Amos",
+		agency:     1,
+		account:    123,
+		amount:     100.00}
 
 	fmt.Println(account1)
 
@@ -33,27 +32,27 @@ func mainPonteiro() {
 	// fmt.Println(account2)
 
 	// Terceira forma de atribuir valores a uma struct
-	var account3 accounts.CurrentAccount
-	account3.HolderName = "Anna Beatriz"
-	account3.Agency = 1
-	account3.Account = 789
-	account3.Amount = 300.00
+	var account3 Ponteiro
+	account3.holderName = "Anna Beatriz"
+	account3.agency = 1
+	account3.account = 789
+	account3.amount = 300.00
 
 	fmt.Println(account3)
 	// Quarta forma (com ponteiros) de atribuir valores a uma struct
-	var account4 *accounts.CurrentAccount
-	account4 = new(accounts.CurrentAccount)
-	account4.HolderName = "Alicia Silva"
-	account4.Agency = 1
-	account4.Account = 789
-	account4.Amount = 400.00
+	var account4 *Ponteiro
+	account4 = new(Ponteiro)
+	account4.holderName = "Alicia Silva"
+	account4.agency = 1
+	account4.account = 789
+	account4.amount = 400.00
 
-	var account5 *accounts.CurrentAccount
-	account5 = new(accounts.CurrentAccount)
-	account5.HolderName = "Alicia Silva"
-	account5.Agency = 1
-	account5.Account = 789
-	account5.Amount = 400.00
+	var account5 *Ponteiro
+	account5 = new(Ponteiro)
+	account5.holderName = "Alicia Silva"
+	account5.agency = 1
+	account5.account = 789
+	account5.amount = 400.00
 
 	// Verificando o valor do conteudo sem ponteiro
 	fmt.Println(*account4)
