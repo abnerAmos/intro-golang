@@ -45,3 +45,16 @@ func FindAllProducts() []Product {
 	defer db.Close() // Fecha conexão após execuçã total dos métodos. PS. defer = AfterAll
 	return products
 }
+
+func NewProduct(name, description string, price float64, quantity int) {
+	db := db.ConectionDataBase()
+
+	insert, err := db.Prepare("insert into products(name, description, price, quantity) values(?, ?, ?, ?)")
+	if err != nil {
+		panic(err.Error())
+	}
+
+	insert.Exec(name, description, price, quantity)
+
+	defer db.Close()
+}
