@@ -10,7 +10,6 @@ import (
 func ConectionDataBase() *sql.DB {
 
 	// String de conexão
-	// "root:root@/golang"
 	// conection := "user=root dbname=golang password=root host=localhost sslmode=disable"
 	db, err := sql.Open("mysql", "root:root@/golang")
 	if err != nil {
